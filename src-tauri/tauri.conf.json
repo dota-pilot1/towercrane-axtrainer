@@ -1,0 +1,56 @@
+{
+  "$schema": "https://raw.githubusercontent.com/nicgirault/tauri-v2-schema/main/schema.json",
+  "productName": "Towercrane AX Trainer",
+  "version": "0.1.0",
+  "identifier": "com.towercrane-axtrainer.tauri",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1424",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["app", "dmg", "nsis"],
+    "createUpdaterArtifacts": true,
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ]
+  },
+  "plugins": {
+    "updater": {
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDlDOUNFQ0MwNjlDNENBMTYKUldRV3lzUnB3T3ljbkRoUENXeDJGYkwxeDAreUxLMk94cTZpVGI0TDVMQ1JZdzNwSVF6SGVSLzcK",
+      "endpoints": [
+        "https://github.com/dota-pilot1/towercrane-axtrainer/releases/latest/download/latest.json"
+      ]
+    }
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Towercrane AX Trainer",
+        "width": 1280,
+        "height": 800,
+        "minWidth": 1000,
+        "minHeight": 600,
+        "resizable": true,
+        "fullscreen": false,
+        "decorations": true,
+        "titleBarStyle": "Overlay",
+        "hiddenTitle": true,
+        "trafficLightPosition": {
+          "x": -100,
+          "y": 0
+        },
+        "dragDropEnabled": false
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  }
+}
