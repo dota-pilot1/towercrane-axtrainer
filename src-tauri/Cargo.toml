@@ -1,6 +1,6 @@
 [package]
 name = "towercrane-axtrainer-tauri"
-version = "0.1.0"
+version = "0.2.0"
 description = "Towercrane AX Trainer - AX 뉴스·공부법·활용 공유"
 authors = ["you"]
 edition = "2021"
