@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import {
   BookOpen,
+  ListChecks,
   LogOut,
   MessageCircle,
   Newspaper,
@@ -18,6 +19,7 @@ import Messenger from "../messenger/Messenger";
 import ChatModule from "../chat/ChatModule";
 import AxBoardModule from "../ax-board/AxBoardModule";
 import AxStudyModule from "../ax-study/AxStudyModule";
+import AiStudyNoteModule from "../ai-study-note/AiStudyNoteModule";
 import CreedModule from "../creed/CreedModule";
 import HomePage from "../home/HomePage";
 import ProfilePage from "../profile/ProfilePage";
@@ -34,7 +36,13 @@ type Props = {
   onLogout: () => void;
 };
 
-type ModuleId = "messenger" | "chat" | "axboard" | "axstudy" | "creed";
+type ModuleId =
+  | "messenger"
+  | "chat"
+  | "axboard"
+  | "axstudy"
+  | "creed"
+  | "aistudynote";
 type ViewId = "home" | "profile" | "settings" | ModuleId;
 
 type ModuleDef = {
@@ -50,6 +58,7 @@ const MODULES: ModuleDef[] = [
   { id: "axboard", label: "AX 보드", icon: Newspaper, ready: true },
   { id: "axstudy", label: "AX 스터디", icon: BookOpen, ready: true },
   { id: "creed", label: "10계명", icon: ScrollText, ready: true },
+  { id: "aistudynote", label: "학습 노트", icon: ListChecks, ready: true },
 ];
 
 function AppShell({ user, onUserUpdate, onLogout }: Props) {
@@ -308,6 +317,8 @@ function AppShell({ user, onUserUpdate, onLogout }: Props) {
           <AxStudyModule />
         ) : activeModule?.id === "creed" ? (
           <CreedModule />
+        ) : activeModule?.id === "aistudynote" ? (
+          <AiStudyNoteModule />
         ) : (
           <PlaceholderModule
             label={activeModule?.label ?? ""}

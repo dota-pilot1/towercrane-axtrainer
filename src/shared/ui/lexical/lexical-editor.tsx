@@ -31,7 +31,7 @@ import { uploadImageToS3 } from './utils/upload-image'
 
 type LexicalEditorProps = {
   initialState?: string
-  onChange: (state: string) => void
+  onChange?: (state: string) => void
   placeholder?: string
   minHeight?: string
   readOnly?: boolean
@@ -71,7 +71,7 @@ export function LexicalEditor({
 }: LexicalEditorProps) {
   const handleChange = useCallback(
     (editorState: EditorState) => {
-      onChange(JSON.stringify(editorState.toJSON()))
+      onChange?.(JSON.stringify(editorState.toJSON()))
     },
     [onChange],
   )
